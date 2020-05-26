@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your account
+{% endblock %}
+
+{% block main %}
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Current Price</th>
+      <th scope="col">Total Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      <td>{{ row["symbol"] }}</td>
+      <td>{{ row["shares"] }}</td>
+      <td>{{ usd(row["current_price"]) }}</td>
+      <td>{{ usd(row["share_value"]) }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <th scope="row">Portfolio</th>
+      <td></td>
+      <td></td>
+      <td>{{ portfolio_value }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Cash</th>
+      <td></td>
+      <td></td>
+      <td>{{ cash }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Total Account</th>
+      <td></td>
+      <td></td>
+      <td>{{ account_value }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock %}
